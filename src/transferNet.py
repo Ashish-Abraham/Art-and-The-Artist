@@ -3,7 +3,7 @@ import torch
 from torch import nn
 
 class FinalNet(torch.nn.Module):
-    def __init__(self, width=8):
+    def __init__(self, width=16):
         super().__init__()
 
         self.blocks = nn.Sequential( 

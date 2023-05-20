@@ -17,12 +17,16 @@ from utils.functions import transfer, display
 
 
 if __name__=='__main__':
+    # Declare the global variable
+    image = None
     with st.container():
         st.markdown("<h1 style='text-align: center; color: red;'>Art-and-The-Artist🎨</h1>", unsafe_allow_html=True)
         st.markdown("<h6 style='text-align: center; color: white;'></h6>", unsafe_allow_html=True)
         uploaded_file = st.file_uploader("Choose an image", type=["png", "jpg"])
         if uploaded_file is not None:
-            image = Image.open(uploaded_file)
+            file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+            image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+            original =Image.open(uploaded_file)
         
         # picture = st.camera_input("Take a picture")
         # if picture:
@@ -39,28 +43,31 @@ if __name__=='__main__':
     ("(1) VanGogh", "(2) Picasso", "(3) Dali", "(4) Rembradnt")
     )
 
-    if option== "(1) VanGogh":
-        model = FinalNet()
-        model.load_state_dict(torch.load('./model_files/vangogh.pth',map_location=torch.device('cpu')))
-        model.eval()
-        display(model,image)
-    elif option== "(2) Picasso":
-        model = FinalNet()
-        model.load_state_dict(torch.load('./model_files/picasso.pth',map_location=torch.device('cpu')))
-        model.eval()
-        display(model,image)
-    elif option== "(3) Dali":
-        model = FinalNet()
-        model.load_state_dict(torch.load('./model_files/picasso.pth',map_location=torch.device('cpu')))
-        model.eval()
-        display(model,image)
-    elif option== "(4) Rembradnt":
-        model = FinalNet()
-        model.load_state_dict(torch.load('./model_files/rembradnt.pth',map_location=torch.device('cpu')))
-        model.eval()
-        display(model,image)
-    else:
-        pass
+    if uploaded_file is None:
+        st.write("Please upload an image")
+    else:    
+        if option== "(1) VanGogh":
+            model = FinalNet()
+            model.load_state_dict(torch.load('./model_files/vangogh.pth',map_location=torch.device('cpu')))
+            model.eval()
+            display(model,image,original)
+        elif option== "(2) Picasso":
+            model = FinalNet()
+            model.load_state_dict(torch.load('./model_files/picasso.pth',map_location=torch.device('cpu')))
+            model.eval()
+            display(model,image,original)
+        elif option== "(3) Dali":
+            model = FinalNet()
+            model.load_state_dict(torch.load('./model_files/picasso.pth',map_location=torch.device('cpu')))
+            model.eval()
+            display(model,image,original)
+        elif option== "(4) Rembradnt":
+            model = FinalNet()
+            model.load_state_dict(torch.load('./model_files/rembradnt.pth',map_location=torch.device('cpu')))
+            model.eval()
+            display(model,image,original)
+        else:
+            pass
 
     
 
