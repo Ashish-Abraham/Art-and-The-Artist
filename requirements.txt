@@ -3,6 +3,8 @@
 -f https://download.pytorch.org/whl/torch_stable.html
 torch==1.10.2+cu102
 torchvision==0.11.3+cu102
+torch==1.8.1+cpu
+torchvision==0.9.1+cpu
 
 streamlit==1.8.0
 boto3==1.20.37
@@ -13,4 +15,3 @@ click==8
 opencv-python==4.5.5.62
 numpy==1.22.2
 pathlib
-os
