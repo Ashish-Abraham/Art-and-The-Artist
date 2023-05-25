@@ -1,3 +1,6 @@
+# Need to get the CPU version of torch packages from here:
+# These are needed because the deployed app doesn't have much room for the full version
+-f https://download.pytorch.org/whl/torch_stable.html
 torch==1.10.2+cu102
 torchvision==0.11.3+cu102
 
