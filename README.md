@@ -20,6 +20,6 @@ Neural Style Transfer featuring styles by Vangogh, Picasso, Rembradnt and Salvad
 ![Image](https://github.com/Ashish-Abraham/Art-and-The-Artist/blob/main/images/ui2.png)<br>
 
 ## To Do:
-* Deploy model trained on more epochs
+* Train model for more epochs.
 
 
